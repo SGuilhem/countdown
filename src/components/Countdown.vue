@@ -4,7 +4,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 // ── CONFIG ──────────────────────────────────────────────────
 const TARGET_DATE = new Date('2026-04-03T17:00:00')
 
-const SURPRISE_ADDRESS = `12 rue de la Surprise\n75001 Paris`
+const SURPRISE_ADDRESS = `Métro Grands Boulevards\nRamène ton joli boulard (sortie 1)`
 
 const PHRASES = [
   'Tu veux bien me rejoindre ce soir? :^)',
@@ -103,7 +103,7 @@ const pad = (n) => String(n).padStart(2, '0')
     <div class="absolute inset-0 bg-black/50" />
 
     <!-- Contenu centré, positionné à 3/4 de la hauteur -->
-    <div class="absolute z-10 left-1/2 -translate-x-1/2" style="top: 7%">
+    <div class="absolute z-10 mx-8" style="top: 3%">
       <div
         class="flex flex-col items-center gap-2 px-6 py-4 text-center text-white rounded-2xl"
         style="
@@ -112,13 +112,10 @@ const pad = (n) => String(n).padStart(2, '0')
           border: 1px solid rgba(255, 255, 255, 0.15);
         "
       >
-        <p
-          v-if="!isFinished"
-          class="text-lg md:text-2xl font-light italic tracking-wide drop-shadow"
-        >
-          Bonjour Gaby Queen!
+        <p class="text-2xl italic tracking-wide drop-shadow font-bold">Coucou Gaby Queen!</p>
+        <p :class="isFinished ? 'text-2xl md:text-4xl font-bold' : 'text-base md:text-lg'">
+          {{ randomPhrase }}
         </p>
-        <p class="text-base md:text-lg">{{ randomPhrase }}</p>
 
         <div v-if="!isFinished" class="flex gap-3 md:gap-6">
           <div
@@ -143,17 +140,9 @@ const pad = (n) => String(n).padStart(2, '0')
         <p v-if="!isFinished" class="text-xs font-light italic opacity-70">
           (Rafraîchis la page pour + de fun)
         </p>
-
-        <div v-else class="flex flex-col items-center gap-4 animate-pulse">
-          <p class="text-3xl md:text-5xl font-bold drop-shadow-lg">🎉 C'est l'heure !</p>
-          <p class="text-lg md:text-2xl font-light">Rends-toi ici :</p>
-          <p class="text-2xl md:text-4xl font-bold whitespace-pre-line drop-shadow-lg">
-            {{ SURPRISE_ADDRESS }}
-          </p>
-        </div>
       </div>
     </div>
-    <div class="absolute z-10 mx-8" style="top: 80%">
+    <div class="absolute z-10 mx-8" :style="{ top: isFinished ? '70%' : '80%' }">
       <div
         class="flex flex-col items-center gap-2 px-6 py-4 text-center text-white rounded-2xl"
         style="
@@ -169,6 +158,13 @@ const pad = (n) => String(n).padStart(2, '0')
           Si tu veux bien qu'on se retrouve ce soir, à la fin du compte à rebours, d'autres infos te
           seront données! Bon journée et Bisous!
         </p>
+        <div v-else class="flex flex-col items-center gap-4 animate-pulse">
+          <p class="text-3xl md:text-5xl font-bold drop-shadow-lg">🎉 C'est l'heure !</p>
+          <p class="text-2xl md:text-4xl font-bold">RDV:</p>
+          <p class="text-2xl md:text-4xl font-bold whitespace-pre-line drop-shadow-lg">
+            {{ SURPRISE_ADDRESS }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
