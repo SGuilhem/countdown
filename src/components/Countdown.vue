@@ -7,7 +7,7 @@ const TARGET_DATE = new Date('2026-04-03T16:30:00')
 const SURPRISE_ADDRESS = `Métro Grands Boulevards\nRamène ton joli boulard (sortie 1)`
 
 const PHRASES = [
-  'Tu veux bien me rejoindre ce soir? :^)',
+  ,
   "Bon y'a peut-être pas des phrases à l'infini...",
   'Tu es la meilleure binome de karaoké au monde',
   'Tu es capable de faire tant de chose grâce à ta volonté',
@@ -158,12 +158,13 @@ const pad = (n) => String(n).padStart(2, '0')
           Si tu veux bien qu'on se retrouve ce soir, à la fin du compte à rebours, d'autres infos te
           seront données! Bon journée et Bisous!
         </p>
-        <div v-else class="flex flex-col items-center gap-4 animate-pulse">
-          <p class="text-3xl md:text-5xl font-bold drop-shadow-lg">🎉 C'est l'heure !</p>
+        <div v-else class="flex flex-col text-5xl items-center gap-4 animate-pulse">
+          <!-- <p class="text-3xl md:text-5xl font-bold drop-shadow-lg">🎉 C'est l'heure !</p>
           <p class="text-2xl md:text-4xl font-bold">RDV:</p>
           <p class="text-2xl md:text-4xl font-bold whitespace-pre-line drop-shadow-lg">
             {{ SURPRISE_ADDRESS }}
-          </p>
+          </p> -->
+          [[ 🚧 En Construction... 🚧 ]]
         </div>
       </div>
     </div>
